@@ -1,6 +1,7 @@
 .venv
 moodle
 .state
+.env
 config.env
 .git
 .gstack

@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     environment:
       SYNC_INTERVAL: ${SYNC_INTERVAL:-120}   # Minuten
-    user: "${UID:-1000}:${GID:-1000}"
+    user: "${PUID:-1000}:${PGID:-1000}"   # Dateien in ./moodle gehören diesem User statt root
     volumes:
       - ./config.env:/app/config.env:ro   # vom Skript gelesen, nicht von Docker ($ im Passwort bleibt intakt)
       - ./moodle:/data

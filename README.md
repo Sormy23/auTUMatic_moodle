@@ -38,7 +38,10 @@ docker compose logs -f
 ```
 
 Das Intervall stellst du mit `SYNC_INTERVAL=30 docker compose up -d` ein.
-Falls deine User-ID nicht 1000 ist: `UID=$(id -u) GID=$(id -g) docker compose up -d`.
+
+Der Container läuft als User-ID 1000, damit die Dateien in `./moodle` dir gehören und nicht root.
+Das ist der erste User unter Linux. Prüfen kannst du es mit `id -u`. Bei einer anderen ID startest du so:
+`PUID=$(id -u) PGID=$(id -g) docker compose up -d`.
 
 Einmalig ohne compose:
 
@@ -57,12 +60,6 @@ uv run tum-moodle-sync            # einmal synchronisieren
 uv run tum-moodle-sync --list     # Kurse anzeigen
 uv run tum-moodle-sync --dry-run  # anzeigen, was geladen würde
 uv run tum-moodle-sync --course 121238 --interval 60   # nur ein Kurs, stündlich
-```
-
-Für einen regelmäßigen Sync per cron (`crontab -e`):
-
-```
-0 */2 * * * cd /pfad/zum/projekt && uv run tum-moodle-sync >> sync.log 2>&1
 ```
 
 Exit-Codes: `0` ok, `1` einzelne Dateien fehlgeschlagen, `2` Login fehlgeschlagen.
