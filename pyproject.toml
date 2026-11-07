@@ -1,6 +1,6 @@
 [project]
 name = "tum-moodle-sync"
-version = "0.1.0"
+version = "0.2.0"
 description = "Sync all files from TUM Moodle to a local folder"
 authors = [
     { name = "Sormy23", email = "sven.oberwalder@icloud.com" }
@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-tum-moodle-sync = "tum_moodle_sync:main"
+tum-moodle-sync = "tum_moodle_sync.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.13.6,<0.14.0"]

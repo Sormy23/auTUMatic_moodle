@@ -63,3 +63,18 @@ uv run tum-moodle-sync --course 121238 --interval 60   # nur ein Kurs, stündlic
 ```
 
 Exit-Codes: `0` ok, `1` einzelne Dateien fehlgeschlagen, `2` Login fehlgeschlagen.
+
+## Code
+
+| Datei (`src/tum_moodle_sync/`) | Aufgabe                                                 |
+|--------------------------------|---------------------------------------------------------|
+| `cli.py`                       | Argumente, Logging, Wiederholung                        |
+| `config.py`                    | `config.env` und Umgebungsvariablen laden               |
+| `session.py`                   | HTTP-Client, Cookies, Moodle-AJAX-Aufrufe               |
+| `auth.py`                      | Login über login.tum.de (Shibboleth)                    |
+| `api.py`                       | Kurse, Module und Datei-Links abfragen                  |
+| `extractors.py`                | Dateien pro Modultyp finden (neuer Typ: hier eintragen) |
+| `pluginfile.py`                | Datei-URLs und Dateinamen                               |
+| `manifest.py`                  | Merkt sich, welche Version schon geladen ist            |
+| `downloader.py`                | Einzelne Datei laden (atomar über `.part`)              |
+| `sync.py`                      | Ablauf: Kurse → Module → Dateien → Download             |
