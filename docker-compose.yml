@@ -1,0 +1,11 @@
+services:
+  tum-moodle-sync:
+    build: .
+    restart: unless-stopped
+    environment:
+      SYNC_INTERVAL: ${SYNC_INTERVAL:-120}   # Minuten
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - ./config.env:/app/config.env:ro   # vom Skript gelesen, nicht von Docker ($ im Passwort bleibt intakt)
+      - ./moodle:/data
+      - ./.state:/state

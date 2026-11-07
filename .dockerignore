@@ -1,0 +1,6 @@
+.venv
+moodle
+.state
+config.env
+.git
+.gstack
